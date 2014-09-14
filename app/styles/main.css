@@ -1,3 +1,7 @@
+.inline {
+  display: inline-block;
+}
+
 html {
   height: 100%;
 }
@@ -46,17 +50,11 @@ p {
 /* Content */
 .content {
   height: 100%;
-
   margin-top: 57px;
+  margin-bottom: 36px;
 
-  /*header-height: 57px;
-  footer-height: 36px;*/
+  padding-top: 20px;
 }
-
-/* Main controller 
-    header-height: 57px;
-    footer-height: 36px;
-*/
 
 
 @media (min-height: 700px) {

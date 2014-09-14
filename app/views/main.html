@@ -1,12 +1,14 @@
+<p>Virtual Chips is an application for keeping track of bets in games like Poker and Blackjack.</p>
 
-<a href="#/bet" class="btn btn-default">Bet</a>
+<h3>Current winnings: {{winnings}} <button ng-click="reset()" class="btn btn-sm btn-default pull-right">Reset</button></h3>
 
+<br>
 
-<h2>Your bankroll: {{bankroll}}</h2>
-<a href="#/buyin" class="btn btn-default">Buy In</a>
+<h2>Your bankroll: {{bankroll}} <a href="#/buyin" class="btn btn-lg btn-default pull-right">Buy In</a></h2>
 
+<br>
+<br>
 
-
-
-<h3>Current winnings: {{winnings}}</h3>
-<button ng-click="reset()" class="btn btn-default">Reset</button>
+<div class="text-center">
+  <a href="#/bet" class="btn btn-lg btn-default">Start a round of betting</a>
+</div>
