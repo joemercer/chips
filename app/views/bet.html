@@ -1,9 +1,21 @@
-<h2>Money on the table: {{currentBet}}</h2>
 
-<div ng-repeat="amt in bettingAmts">
-	<button ng-click="bet({{amt}})" class="btn btn-default">{{amt}}</button>
+<h3>At risk: {{currentBet}}</h3>
+
+<br>
+
+<h2 class="inline">Bet&nbsp;</h2>
+<div ng-repeat="amt in bettingAmts" class="inline">
+	<button ng-click="bet({{amt}})" class="btn btn-lg btn-default">{{amt}}</button>
 </div>
 
-<h2>Bankroll: {{bankroll}}</h2>
+<br>
+<br>
 
-<a href="#/win" class="btn btn-default">Done</a>
+<h3>Bankroll: {{bankroll}}</h3>
+
+<br>
+<br>
+
+<div class="text-center">
+  <a href="#/win" class="btn btn-lg btn-default">End the round of betting</a>
+</div>
