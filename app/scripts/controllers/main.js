@@ -27,6 +27,21 @@ angular.module('chipsApp')
   		}
   	};
 
+  	$scope.winMults = [
+  		0, 1, 1.5, 2, 3, 5
+  	];
+
+  	$scope.win = function(mult) {
+  		data.winnings -= data.currentBet;
+  		var amt = data.currentBet * mult;
+  		data.winnings += amt;
+  		data.bankroll += amt;
+  		data.currentBet = 0;
+  		$scope.bankroll = data.bankroll;
+    	$scope.winnings = data.winnings;
+    	$scope.currentBet = data.currentBet;
+  	};
+
     $scope.buyInAmts = [
   		100, 200, 500, 1000
   	];

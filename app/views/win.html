@@ -1,1 +1,12 @@
-<p>This is the win view.</p>
+<h2>Your money on the table: {{currentBet}}</h2>
+
+<p>How much did you win?</p>
+
+<div ng-repeat="mult in winMults">
+	<button ng-click="win({{mult}})" class="btn btn-default">({{mult}}x)</button>
+</div>
+
+<h2>Bankroll: {{bankroll}}</h2>
+
+<a href="#/bet" class="btn btn-default">Bet</a>
+<a href="#" class="btn btn-default">Home</a>
