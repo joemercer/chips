@@ -1,0 +1,9 @@
+<h2>Buy in for:</h2>
+
+<div ng-repeat="amt in buyInAmts">
+	<button ng-click="buyIn({{amt}})" class="btn btn-default">{{amt}}</button>
+</div>
+
+<h2>Your bankroll: {{bankroll}}</h2>
+
+<a href="#" class="btn btn-default">Done</a>
