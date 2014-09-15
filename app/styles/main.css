@@ -50,9 +50,11 @@ p {
 /* Content */
 .content {
   height: 100%;
+}
+
+.content-wrapper {
   margin-top: 57px;
   margin-bottom: 36px;
-
   padding-top: 20px;
 }
 
