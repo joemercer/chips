@@ -19,24 +19,32 @@ angular.module('chipsApp')
   	];
 
   	$scope.bet = function(amt) {
-  		if ((data.bankroll - amt) >= 0) {
-  			data.bankroll -= amt;
-	  		data.currentBet += amt;
-	  		$scope.bankroll = data.bankroll;
-	    	$scope.currentBet = data.currentBet;
-  		}
+  		if ((data.bankroll - amt) < 0) {
+        // can't bet what you don't have
+        return;
+      }
+      if ((data.currentBet + amt) < 0) {
+        // can't bet negative
+        return;
+      }
+
+			data.bankroll -= amt;
+      data.winnings -= amt;
+  		data.currentBet += amt;
+  		$scope.bankroll = data.bankroll;
+      $scope.winnings = data.winnings;
+    	$scope.currentBet = data.currentBet;
   	};
 
-  	$scope.winMults = [
-  		0, 1, 1.5, 2, 3, 5
-  	];
+    $scope.resetBet = function() {
+      data.currentBet = 0;
+      $scope.currentBet = data.currentBet;
+    };
 
-  	$scope.win = function(mult) {
-  		data.winnings -= data.currentBet;
-  		var amt = data.currentBet * mult;
+  	$scope.win = function(amt) {
   		data.winnings += amt;
   		data.bankroll += amt;
-  		data.currentBet = 0;
+  		data.currentBet -= amt;
   		$scope.bankroll = data.bankroll;
     	$scope.winnings = data.winnings;
     	$scope.currentBet = data.currentBet;
