@@ -20,7 +20,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/buyin.html',
         controller: 'MainCtrl'
       })
       .when('/buyin', {
@@ -33,6 +33,10 @@ angular
       })
       .when('/win', {
         templateUrl: 'views/win.html',
+        controller: 'MainCtrl'
+      })
+      .when('/result', {
+        templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
       .otherwise({
