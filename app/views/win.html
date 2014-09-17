@@ -4,7 +4,7 @@
 <br>
 <br>
 
-<div ng-repeat="amt in bettingAmts" class="inline">
+<div ng-repeat="amt in bettingAmts" ng-if="amt <= (bankroll + currentBet)" class="inline">
 	<button ng-click="win({{-1*amt}})" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-up"></button>
 	<br>
 	<button class="btn btn-lg btn-default">{{amt}}</button>
