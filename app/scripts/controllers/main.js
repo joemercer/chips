@@ -64,6 +64,10 @@ angular.module('chipsApp')
   	];
 
     $scope.buyIn = function(amt) {
+      if ((data.bankroll + amt) < 0) {
+        // can't have a negative bankroll
+        return;
+      }
     	data.bankroll += amt;
     	$scope.bankroll = data.bankroll;
     };

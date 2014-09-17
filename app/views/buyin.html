@@ -1,19 +1,17 @@
 
+
 <h3>Buy in:</h3>
+
 <div ng-repeat="amt in bettingAmts" class="inline">
-	<button ng-click="buyIn({{amt}})" class="btn btn-lg btn-default">{{amt}}</button>
+	<button ng-click="buyIn({{-1*amt}})" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-up"></button>
+	<br>
+	<button class="btn btn-lg btn-default">{{amt}}</button>
+	<br>
+	<button ng-click="buyIn({{amt}})" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-down"></button>
 </div>
 
 <br>
 <br>
-<div class="text-center">
-  <a href="#/bet" class="btn btn-lg btn-default">Done, start betting</a>
-</div>
-<br>
-<br>
-<br>
 
-<div ng-repeat="amt in bettingAmts" class="inline">
-	<button ng-click="buyIn({{-1*amt}})" class="btn btn-lg btn-default">{{amt}}</button>
-</div>
-<h3>Bankroll: {{bankroll}}</h3>
+<h3>Your chips: {{bankroll}} <a href="#/bet" class="btn btn-lg btn-default">Done</a></h3>
+
