@@ -11,7 +11,7 @@ angular.module('chipsApp')
   .service('data', function data() {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    this.bankroll = 1000;
+    this.bankroll = 50;
     this.winnings = 0;
 
     this.currentBet = 0;
