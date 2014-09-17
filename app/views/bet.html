@@ -1,19 +1,36 @@
 
-<div ng-repeat="amt in bettingAmts" class="inline">
-	<button ng-click="bet({{-1*amt}})" class="btn btn-lg btn-default">{{amt}}</button>
-</div>
-<h3>Bet: {{currentBet}}</h3>
+<h3 ng-if="done" style="color: red;" class="text-center">Bet: {{currentBet}}</h3>
 
 <br>
-<br>
+
 <div class="text-center">
-  <a href="#/buyin" class="btn btn-default">Buy in</a> <a href="#/win" class="btn btn-lg btn-default">Done</a>
+	<button ng-if="!done" ng-click="lock()" class="btn btn-lg btn-default">Done</button>
+
+	<br>
+
+	<button ng-if="done" ng-click="lock()" class="btn btn-lg btn-default">Continue betting</button>
+	<a ng-if="done" href="#/win" class="btn btn-lg btn-default">Round over</a>
 </div>
-<br>
-<br>
+
 <br>
 
-<div ng-repeat="amt in bettingAmts" class="inline">
-	<button ng-click="bet({{amt}})" class="btn btn-lg btn-default">{{amt}}</button>
+<div ng-if="!done">
+	<h3 ng-if="!done">Chips on the table: {{currentBet}}</h3>
+
+	<br>
+	<br>
+
+	<div ng-repeat="amt in bettingAmts" class="inline">
+		<button ng-click="bet({{amt}})" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-up"></button>
+		<br>
+		<button class="btn btn-lg btn-default">{{amt}}</button>
+		<br>
+		<button ng-click="bet({{-1*amt}})" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-down"></button>
+	</div>
+
+	<br>
+	<br>
+
+	<h3>Your chips: {{bankroll}} <a href="#/buyin" class="btn btn-default">Get more</a></h3>
+
 </div>
-<h3>Bankroll: {{bankroll}}</h3>
