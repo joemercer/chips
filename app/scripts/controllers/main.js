@@ -92,7 +92,7 @@ angular.module('chipsApp')
   		50, 100, 200, 500
   	];
 
-    $scope.buyInAmt = data.bankroll;
+    $scope.buyInAmt = 0;
 
     $scope.addToBuyInAmt = function(amt) {
       if ((data.bankroll + $scope.buyInAmt + amt) < 0) {
