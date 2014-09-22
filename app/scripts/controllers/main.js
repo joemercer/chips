@@ -64,6 +64,28 @@ angular.module('chipsApp')
       $scope.bettingLocked = false;
     };
 
+    // used after clicking win
+    // to immediately win the initial betting amount
+    $scope.winCurrentBetAmt = function() {
+      data.bankroll += $scope.currentBet;
+      data.winnings += $scope.currentBet;
+      $scope.bankroll = data.bankroll;
+      $scope.winnings = data.winnings;
+
+      data.currentBet = 0;
+      $scope.currentBet = data.currentBet;
+    };
+
+    // used after clicking lose
+    // to immediately lose the bet amt
+    $scope.loseCurrentBetAmt = function() {
+      data.currentBet = 0;
+      $scope.currentBet = data.currentBet;
+
+      $scope.raiseAmt = 0;
+      $scope.unlockBetting();
+    };
+
 
     // # /win
 

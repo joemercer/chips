@@ -8,8 +8,15 @@
 
 	<br>
 
-	<button ng-if="bettingLocked" ng-click="unlockBetting()" class="btn btn-lg btn-default">Continue betting</button>
-	<a ng-if="bettingLocked" href="#/win" class="btn btn-lg btn-default">Round over</a>
+	<div ng-if="bettingLocked">
+
+		<button ng-click="unlockBetting()" class="btn btn-lg btn-default">Continue betting</button>
+		<br>
+		<a href="#/bet" ng-click="loseCurrentBetAmt()" class="btn btn-lg btn-default">Lose</a>
+		<a href="#/win" ng-click="winCurrentBetAmt()" class="btn btn-lg btn-default">Win</a>
+
+	</div>
+
 </div>
 
 <br>
