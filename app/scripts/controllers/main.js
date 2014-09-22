@@ -18,12 +18,14 @@ angular.module('chipsApp')
   		1, 5, 10, 25, 100
   	];
 
-  	$scope.bet = function(amt) {
+    $scope.raiseAmt = 0;
+
+  	$scope.addToRaise = function(amt) {
   		if ((data.bankroll - amt) < 0) {
         // can't bet what you don't have
         return;
       }
-      if ((data.currentBet + amt) < 0) {
+      if (($scope.raiseAmt + amt) < 0) {
         // can't bet negative
         return;
       }
@@ -32,18 +34,37 @@ angular.module('chipsApp')
         return;
       }
 
-			data.bankroll -= amt;
-      data.winnings -= amt;
-  		data.currentBet += amt;
-  		$scope.bankroll = data.bankroll;
-      $scope.winnings = data.winnings;
-    	$scope.currentBet = data.currentBet;
+      $scope.raiseAmt += amt;
+      $scope.bankroll -= amt;
   	};
 
-    $scope.bettingLocked = false;
-    $scope.lock = function() {
-      $scope.bettingLocked = !$scope.bettingLocked;
+    $scope.undoRaise = function() {
+      $scope.bankroll += $scope.raiseAmt;
+      $scope.raiseAmt = 0;
     };
+
+    $scope.bettingLocked = false;
+    $scope.lockBetting = function() {
+      $scope.bettingLocked = !$scope.bettingLocked;
+
+      data.currentBet += $scope.raiseAmt;
+      data.winnings -= $scope.raiseAmt;
+      $scope.currentBet = data.currentBet;
+      $scope.winnings = data.winnings;
+
+      data.bankroll = $scope.bankroll;
+
+      $scope.raiseAmt = 0;
+    };
+
+
+
+
+
+
+
+
+
 
     $scope.resetBet = function() {
       data.currentBet = 0;

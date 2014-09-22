@@ -4,28 +4,28 @@
 <br>
 
 <div class="text-center">
-	<button ng-if="!bettingLocked" ng-click="lock()" class="btn btn-lg btn-default">Done</button>
+	<button ng-if="!bettingLocked" ng-click="lockBetting()" class="btn btn-lg btn-default">Done</button>
 
 	<br>
 
-	<button ng-if="bettingLocked" ng-click="lock()" class="btn btn-lg btn-default">Continue betting</button>
+	<button ng-if="bettingLocked" ng-click="lockBetting()" class="btn btn-lg btn-default">Continue betting</button>
 	<a ng-if="bettingLocked" href="#/win" class="btn btn-lg btn-default">Round over</a>
 </div>
 
 <br>
 
-<div ng-if="!bettingLocked">
-	<h3 ng-if="!bettingLocked">Chips on the table: {{currentBet}}</h3>
+<div ng-if="!bettingLocked" class="text-center">
+	<h3>Chips on the table: {{currentBet}}</h3>
+
+	<br>
+
+	<h3>Raise: {{raiseAmt}} <button ng-click="undoRaise()" class="btn btn-lg btn-default">Undo</button></h3> 
 
 	<br>
 	<br>
 
-	<div ng-repeat="amt in bettingAmts" ng-if="amt <= (bankroll + currentBet)" class="inline">
-		<button ng-click="bet({{amt}})" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-up"></button>
-		<br>
-		<button class="btn btn-lg btn-default">{{amt}}</button>
-		<br>
-		<button ng-click="bet({{-1*amt}})" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-down"></button>
+	<div ng-repeat="amt in bettingAmts" ng-if="amt <= (bankroll + raiseAmt)" class="inline">
+		<button ng-click="addToRaise({{amt}})" class="btn btn-lg btn-default">{{amt}}</button>
 	</div>
 
 	<br>
