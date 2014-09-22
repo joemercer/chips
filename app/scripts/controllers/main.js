@@ -80,20 +80,42 @@ angular.module('chipsApp')
     	$scope.currentBet = data.currentBet;
   	};
 
+
+
+    // # /buyIn page
+
     $scope.buyInAmts = [
-  		100, 200, 500, 1000
+  		50, 100, 200, 500
   	];
 
-    $scope.buyIn = function(amt) {
-      if ((data.bankroll + amt) < 0) {
+    $scope.buyInAmt = data.bankroll;
+
+    $scope.addToBuyInAmt = function(amt) {
+      if ((data.bankroll + $scope.buyInAmt + amt) < 0) {
         // can't have a negative bankroll
         return;
       }
-    	data.bankroll += amt;
-    	$scope.bankroll = data.bankroll;
+      $scope.buyInAmt += amt;
     };
 
+    $scope.undoBuyIn = function() {
+      $scope.buyInAmt = 0;
+    };
+
+    $scope.buyIn = function() {
+      data.bankroll += $scope.buyInAmt;
+      $scope.bankroll = data.bankroll;
+
+      $scope.buyInAmt = 0;
+    };
+
+
+    // # Utilities
+
     $scope.reset = function() {
+      $scope.raiseAmt = 0;
+      $scope.buyInAmt = 0;
+
     	data.bankroll = 0;
     	data.winnings = 0;
     	data.currentBet = 0;
