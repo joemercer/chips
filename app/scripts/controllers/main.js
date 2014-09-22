@@ -18,6 +18,8 @@ angular.module('chipsApp')
   		1, 5, 10, 25, 100
   	];
 
+    // # /bet
+
     $scope.raiseAmt = 0;
 
   	$scope.addToRaise = function(amt) {
@@ -58,31 +60,33 @@ angular.module('chipsApp')
     };
 
 
+    // # /win
 
+    $scope.winAmt = 0;
 
-
-
-
-
-
-
-    $scope.resetBet = function() {
-      data.currentBet = 0;
-      $scope.currentBet = data.currentBet;
+    $scope.addToWin = function(amt) {
+      $scope.winAmt += amt;
     };
 
-  	$scope.win = function(amt) {
-  		data.winnings += amt;
-  		data.bankroll += amt;
-  		data.currentBet -= amt;
+    $scope.undoAddToWin = function() {
+      $scope.winAmt = 0;
+    };
+
+  	$scope.win = function() {
+      data.bankroll += $scope.winAmt;
+  		data.winnings += $scope.winAmt;
   		$scope.bankroll = data.bankroll;
     	$scope.winnings = data.winnings;
-    	$scope.currentBet = data.currentBet;
+
+      data.currentBet = 0;
+      $scope.currentBet = data.currentBet;
+
+      $scope.winAmt = 0;
   	};
 
 
 
-    // # /buyIn page
+    // # /buyIn
 
     $scope.buyInAmts = [
   		50, 100, 200, 500
