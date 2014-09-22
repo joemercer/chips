@@ -37,26 +37,31 @@ angular.module('chipsApp')
       }
 
       $scope.raiseAmt += amt;
-      $scope.bankroll -= amt;
   	};
 
-    $scope.undoRaise = function() {
-      $scope.bankroll += $scope.raiseAmt;
+    $scope.undoAddToRaise = function() {
       $scope.raiseAmt = 0;
     };
 
     $scope.bettingLocked = false;
-    $scope.lockBetting = function() {
-      $scope.bettingLocked = !$scope.bettingLocked;
+
+    $scope.raise = function() {
+      $scope.bettingLocked = true;
 
       data.currentBet += $scope.raiseAmt;
-      data.winnings -= $scope.raiseAmt;
       $scope.currentBet = data.currentBet;
+
+      data.bankroll -= $scope.raiseAmt;
+      $scope.bankroll = data.bankroll;
+
+      data.winnings -= $scope.raiseAmt;
       $scope.winnings = data.winnings;
 
-      data.bankroll = $scope.bankroll;
-
       $scope.raiseAmt = 0;
+    };
+
+    $scope.unlockBetting = function() {
+      $scope.bettingLocked = false;
     };
 
 
@@ -94,7 +99,7 @@ angular.module('chipsApp')
 
     $scope.buyInAmt = 0;
 
-    $scope.addToBuyInAmt = function(amt) {
+    $scope.addToBuyIn = function(amt) {
       if ((data.bankroll + $scope.buyInAmt + amt) < 0) {
         // can't have a negative bankroll
         return;
@@ -102,7 +107,7 @@ angular.module('chipsApp')
       $scope.buyInAmt += amt;
     };
 
-    $scope.undoBuyIn = function() {
+    $scope.undoAddToBuyIn = function() {
       $scope.buyInAmt = 0;
     };
 

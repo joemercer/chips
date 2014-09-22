@@ -4,11 +4,11 @@
 <br>
 
 <div class="text-center">
-	<button ng-if="!bettingLocked" ng-click="lockBetting()" class="btn btn-lg btn-default">Done</button>
+	<button ng-if="!bettingLocked" ng-click="raise()" class="btn btn-lg btn-default">Done</button>
 
 	<br>
 
-	<button ng-if="bettingLocked" ng-click="lockBetting()" class="btn btn-lg btn-default">Continue betting</button>
+	<button ng-if="bettingLocked" ng-click="unlockBetting()" class="btn btn-lg btn-default">Continue betting</button>
 	<a ng-if="bettingLocked" href="#/win" class="btn btn-lg btn-default">Round over</a>
 </div>
 
@@ -19,7 +19,7 @@
 
 	<br>
 
-	<h3>Raise: {{raiseAmt}} <button ng-click="undoRaise()" class="btn btn-lg btn-default">Undo</button></h3> 
+	<h3>Raise: {{raiseAmt}} <button ng-click="undoAddToRaise()" class="btn btn-lg btn-default">Undo</button></h3> 
 
 	<br>
 	<br>
@@ -31,6 +31,6 @@
 	<br>
 	<br>
 
-	<h3>Your chips: {{bankroll}} <a href="#/buyin" class="btn btn-default">Get more</a></h3>
+	<h3>Your chips: {{bankroll - raiseAmt}} <a href="#/buyin" class="btn btn-default">Get more</a></h3>
 
 </div>
