@@ -27,7 +27,7 @@ angular.module('chipsApp')
         // can't bet negative
         return;
       }
-      if ($scope.done) {
+      if ($scope.bettingLocked) {
         // can't bet after you're done betting
         return;
       }
@@ -40,9 +40,9 @@ angular.module('chipsApp')
     	$scope.currentBet = data.currentBet;
   	};
 
-    $scope.done = false;
+    $scope.bettingLocked = false;
     $scope.lock = function() {
-      $scope.done = !$scope.done;
+      $scope.bettingLocked = !$scope.bettingLocked;
     };
 
     $scope.resetBet = function() {

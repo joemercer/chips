@@ -1,21 +1,21 @@
 
-<h3 ng-if="done" style="color: red;" class="text-center">Bet: {{currentBet}}</h3>
+<h3 ng-if="bettingLocked" style="color: red;" class="text-center">Bet: {{currentBet}}</h3>
 
 <br>
 
 <div class="text-center">
-	<button ng-if="!done" ng-click="lock()" class="btn btn-lg btn-default">Done</button>
+	<button ng-if="!bettingLocked" ng-click="lock()" class="btn btn-lg btn-default">Done</button>
 
 	<br>
 
-	<button ng-if="done" ng-click="lock()" class="btn btn-lg btn-default">Continue betting</button>
-	<a ng-if="done" href="#/win" class="btn btn-lg btn-default">Round over</a>
+	<button ng-if="bettingLocked" ng-click="lock()" class="btn btn-lg btn-default">Continue betting</button>
+	<a ng-if="bettingLocked" href="#/win" class="btn btn-lg btn-default">Round over</a>
 </div>
 
 <br>
 
-<div ng-if="!done">
-	<h3 ng-if="!done">Chips on the table: {{currentBet}}</h3>
+<div ng-if="!bettingLocked">
+	<h3 ng-if="!bettingLocked">Chips on the table: {{currentBet}}</h3>
 
 	<br>
 	<br>
