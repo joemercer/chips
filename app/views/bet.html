@@ -5,14 +5,14 @@
 	<br>
 
 	<div class="text-center">
-		<button ng-if="!bettingLocked" ng-click="raise()" class="btn btn-lg btn-default">Done</button>
-
-		<br>
+		<div ng-if="!bettingLocked">
+			<button ng-click="raise()" class="btn btn-lg btn-default">Done</button>
+		</div>
 
 		<div ng-if="bettingLocked">
 
 			<button ng-click="unlockBetting()" class="btn btn-lg btn-default">Continue betting</button>
-			<br>
+			<br><br><br><br>
 			<a href="#/lose" class="btn btn-lg btn-default">Lose</a>
 			<a href="#/win" ng-click="winCurrentBetAmt()" class="btn btn-lg btn-default">Win</a>
 
