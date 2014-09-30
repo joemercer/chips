@@ -9,9 +9,10 @@
   <div class="content-wrapper">
     <div class="text-center">
 
-			<h3>Buy in: <a href="#/bet" ng-click="buyIn()" class="btn btn-lg btn-default">Done</a></h3>
-
-			<h3>Your chips: {{bankroll + buyInAmt}} <button ng-click="undoAddToBuyIn()" class="btn btn-lg btn-default">Undo</button></h3>
+    	<h3>
+				<a href="#/bet" ng-click="buyIn()" class="btn btn-lg btn-default"><span ng-if="buyInAmt <= 0"> Back</span><span ng-if="buyInAmt > 0"> Buy in {{buyInAmt}}</span></a>
+				<button ng-if="buyInAmt > 0" ng-click="undoAddToBuyIn()" class="btn btn-lg btn-default">Undo</button>
+			</h3>
 
 			<br>
 			<br>
@@ -19,6 +20,11 @@
 			<div ng-repeat="amt in buyInAmts" class="inline">
 				<button ng-click="addToBuyIn({{amt}})" class="btn btn-lg btn-default">{{amt}}</button>
 			</div>
+
+			<br>
+			<br>
+
+			<h3>You will have {{bankroll + buyInAmt}} chips</h3>
 
 		</div>
   </div>
