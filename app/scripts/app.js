@@ -35,6 +35,10 @@ angular
         templateUrl: 'views/win.html',
         controller: 'MainCtrl'
       })
+      .when('/lose', {
+        templateUrl: 'views/lose.html',
+        controller: 'MainCtrl'
+      })
       .when('/result', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
